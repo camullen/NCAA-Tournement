@@ -19,8 +19,8 @@ import com.PortalCapital.NCAA.model.Tournament;
  */
 public class TournamentTest extends TestCase {
 
-	public static final String STRUCTURE_FILE = "C:\\Users\\cmullen\\Eclipse Workspace\\Portal Capital Model\\TournamentStructure.csv";
-	public static final String TEAM_FILE = "C:\\Users\\cmullen\\Eclipse Workspace\\Portal Capital Model\\testTeams.csv";
+	public static final String STRUCTURE_FILE = "TournamentStructure.csv";
+	public static final String TEAM_FILE = "testTeams.csv";
 	
 	
 	/**
@@ -38,9 +38,7 @@ public class TournamentTest extends TestCase {
 	}
 	
 	
-	/*public void testTournamentStructure(){
-		
-		
+	public void testTournamentStructure(){
 		
 		Tournament t = new Tournament();
 		try {
@@ -51,14 +49,14 @@ public class TournamentTest extends TestCase {
 		}
 		
 		assertEquals(64, t.structure.size());
-		assertEquals(6, t.structure.get(0).size());
-		assertEquals(1, t.structure.get(0).get(0).size());
-		assertEquals(2, t.structure.get(4).get(1).size());
-		assertEquals(4, t.structure.get(17).get(2).size());
-		assertEquals(8, t.structure.get(32).get(3).size());
-		assertEquals(16, t.structure.get(63).get(4).size());
-		assertEquals(32, t.structure.get(5).get(5).size());
-	}*/
+		assertEquals(6, t.structure.get(101).size());
+		assertEquals(1, t.structure.get(101).get(0).size());
+		assertEquals(2, t.structure.get(101).get(1).size());
+		assertEquals(4, t.structure.get(101).get(2).size());
+		assertEquals(8, t.structure.get(101).get(3).size());
+		assertEquals(16, t.structure.get(101).get(4).size());
+		assertEquals(32, t.structure.get(101).get(5).size());
+	}
 	
 	
 	public void testInputTeams(){
@@ -72,6 +70,7 @@ public class TournamentTest extends TestCase {
 		}
 		
 		Team kansas = t.teamMap.get(302);
+		assertNotNull(kansas);
 		assertEquals("Kansas", kansas.name);
 	}
 	
@@ -81,7 +80,13 @@ public class TournamentTest extends TestCase {
 			t.loadTournamentStructure(STRUCTURE_FILE);
 			t.loadTournamentTeams(TEAM_FILE);
 			List<Team> results = t.simulateTournament(9.0);
+			for (int i = 0; i < 1000; i++){
+				results = t.simulateTournament(9.0);
+			}
 			assertNotNull(results);
+			for(Team thisTeam : results){
+				System.out.println(thisTeam + " eliminated in round " + thisTeam.roundEliminated);
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

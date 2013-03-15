@@ -33,7 +33,11 @@ public class Team {
 	
 	
 	
-	
+	@Override
+	public String toString(){
+		String returnString = id + " - " + name;
+		return returnString;
+	}
 	
 	
 	

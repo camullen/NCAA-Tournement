@@ -31,7 +31,12 @@ public class GamePlayer {
 		
 		//Should incorporate point spread and historical results preferentially
 		
-		return sagarinPlayGame(a, b);
+		boolean result = sagarinPlayGame(a, b);
+		Team winner = result ? a : b;
+		Team loser = result ? b : a;
+		System.out.println(winner + " defeats " + loser);
+		
+		return result;
 	}
 	
 	

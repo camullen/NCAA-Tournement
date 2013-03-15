@@ -1,1 +1,65 @@
-#NAME?
+Name,ID,SagarinName,SagarinRating
+UNC Asheville,116,NC Asheville,76.03
+Loyola (MD),115,Loyola-Maryland,74.84
+St. Bonaventure,114,St. Bonaventure,80.87
+Montana,113,Montana,78.11
+Harvard,112,Harvard,82.34
+Texas,111,Texas,85.61
+West Virginia,110,West Virginia,83.69
+Southern Miss,109,Southern Miss,80.44
+Kansas State,108,Kansas State,86.08
+Gonzaga,107,Gonzaga,84.48
+Cincinnati,106,Cincinnati,83.69
+Vanderbilt,105,Vanderbilt,86.45
+Wisconsin,104,Wisconsin,90.86
+Florida State,103,Florida State,86.17
+Ohio State,102,Ohio State,94.91
+Syracuse,101,Syracuse,91.32
+WKU,216,Western Kentucky,70.04
+Lehigh,215,Lehigh,78.6
+South Dakota St.,214,South Dakota State,80.93
+New Mexico State,213,New Mexico State,80.89
+VCU,212,VCU(Va. Commonwealth),81.34
+Colorado,211,Colorado,79.26
+Xavier,210,Xavier-Ohio,81.13
+UConn,209,Connecticut,83.75
+Iowa State,208,Iowa State,84.35
+Notre Dame,207,Notre Dame,82.38
+UNLV,206,UNLV,85.25
+Wichita State,205,Wichita State,89.47
+Indiana,204,Indiana,89.55
+Baylor,203,Baylor,87.99
+Duke,202,Duke,88.27
+Kentucky,201,Kentucky,94.35
+Vermont,316,Vermont,74.84
+Detroit,315,Detroit,75.84
+Belmont,314,Belmont,85.6
+Ohio,313,Ohio,79.86
+South Florida,312,South Florida,79.94
+NC State,311,NC State,82.63
+Purdue,310,Purdue,85.14
+Alabama,309,Alabama,85.26
+Creighton,308,Creighton,84.77
+Saint Mary's,307,Mount St. Mary's,62.93
+San Diego St.,306,San Diego State,81.39
+Temple,305,Temple,83.52
+Michigan,304,Michigan,85.13
+Georgetown,303,Georgetown,88.11
+Kansas,302,Kansas,92.45
+North Carolina,301,North Carolina,91.85
+LIU Brooklyn,416,Long Island U.,72.75
+Norfolk State,415,Norfolk State,70.52
+BYU,414,BYU,83.23
+Davidson,413,Davidson,80.35
+Long Beach State,412,Long Beach State,83
+Colorado State,411,Colorado State,79.31
+Virginia,410,Virginia,85.4
+Saint Louis,409,Saint Louis,87.33
+Memphis,408,Memphis,88.74
+Florida,407,Florida,87.7
+Murray State,406,Murray State,82.01
+New Mexico,405,New Mexico,87.37
+Louisville,404,Louisville,86.5
+Marquette,403,Marquette,87.5
+Missouri,402,Missouri,90.9
+Michigan State,401,Michigan State,93.12

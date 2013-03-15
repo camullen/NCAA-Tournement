@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -40,22 +38,31 @@ public class Tournament {
 	
 	
 	public List<Team> simulateTournament(double standardDeviation){
-		if(!(structureLoaded && teamsLoaded)) return null;
-		List<Team> teamsAlive = new LinkedList<Team>(teamMap.values());
+		if(!structureLoaded){
+			System.err.println("Error: Tournament Structure Not Loaded");
+			assert(false);
+		}
+		
+		if(!teamsLoaded){
+			System.err.println("Error: Teams Not Properly Loaded");
+			assert(false);
+		}
+		
+		Set<Team> teamsAlive = new HashSet<Team>(teamMap.values());
 		List<Team> teamResults = new ArrayList<Team>();
 		
 		GamePlayer player = new GamePlayer(standardDeviation);
-		ListIterator<Team> it = teamsAlive.listIterator();
 		
 		for(int i = 0; i < TOURNAMENT_ROUNDS; i++){
-			while(it.hasNext()){
-				Team thisTeam = it.next();
-				doTeamRound(thisTeam, i, teamsAlive, teamResults, player);
+			Set<Team> teamsPlayed = new HashSet<Team>();
+			for(Team t : teamMap.values()){
+				doTeamRound(t, i, teamsAlive, teamResults, player, teamsPlayed);
 			}
-			it = teamsAlive.listIterator();
 		}
 		
-		if(teamsAlive.size() != 1) return null;
+		if(teamsAlive.size() != 1) {
+			throw new RuntimeException("Error: More than one team remaining after simulation");
+		}
 		removeTeam(teamsAlive.iterator().next(), teamsAlive, teamResults, TOURNAMENT_ROUNDS + 1);
 		return teamResults;
 	}
@@ -68,10 +75,14 @@ public class Tournament {
 	 * @param teamResults
 	 * @param player
 	 */
-	private void doTeamRound(Team thisTeam, int round, List<Team> teamsAlive,
-			List<Team> teamResults, GamePlayer player) {
+	private void doTeamRound(Team thisTeam, int round, Set<Team> teamsAlive,
+			List<Team> teamResults, GamePlayer player, Set<Team> teamsPlayed) {
+		if(!teamsAlive.contains(thisTeam)) return;
+		if(teamsPlayed.contains(thisTeam)) return;
 		Team opponent = getOpponent(thisTeam, round, teamsAlive);
 		boolean result = player.playGame(thisTeam, opponent);
+		teamsPlayed.add(thisTeam);
+		teamsPlayed.add(opponent);
 		if(result){
 			removeTeam(opponent, teamsAlive, teamResults, round + 1);
 		} else {
@@ -86,7 +97,7 @@ public class Tournament {
 	 * @param teamResults
 	 * @param round
 	 */
-	private void removeTeam(Team opponent, List<Team> teamsAlive,
+	private void removeTeam(Team opponent, Set<Team> teamsAlive,
 			List<Team> teamResults, int roundEliminated) {
 		Team opponentCopy = new Team(opponent);
 		opponentCopy.roundEliminated = roundEliminated;
@@ -100,14 +111,17 @@ public class Tournament {
 	 * @param round
 	 * @return
 	 */
-	private Team getOpponent(Team thisTeam, int round, List<Team> teamsAlive) {
+	private Team getOpponent(Team thisTeam, int round, Set<Team> teamsAlive) {
 		Set<Integer> potentialOpponentsOrig = structure.get(thisTeam.id).get(round);
 		Set<Team> potentialOpponents = new HashSet<Team>();
 		for(Integer i : potentialOpponentsOrig){
 			potentialOpponents.add(teamMap.get(i));
 		}
 		potentialOpponents.retainAll(teamsAlive);
-		if(potentialOpponents.size() != 1) return null;
+		if(potentialOpponents.size() != 1) {
+			throw new RuntimeException("Error: Multiple teams available to play");
+
+		}
 		return potentialOpponents.iterator().next();
 	}
 
@@ -117,9 +131,11 @@ public class Tournament {
 		structureReader = new BufferedReader(new FileReader(filename));
 		while(structureReader.ready()){
 			String fileLine = structureReader.readLine();
-			addStringToStructure(fileLine);
+			if(!fileLine.equals(""))
+				addStringToStructure(fileLine);
 		}
 		structureLoaded = true;
+		structureReader.close();
 	}
 	
 	public void loadTournamentTeams(String filename) throws IOException{
@@ -130,6 +146,7 @@ public class Tournament {
 			addStringToTeams(fileLine);
 		}
 		teamsLoaded = true;
+		teamReader.close();
 	}
 	
 	
@@ -143,7 +160,12 @@ public class Tournament {
 		while(tok.hasMoreTokens()){
 			allTokens.add(tok.nextToken());
 		}
-		if(allTokens.size() != TEAM_FILE_COLS || allTokens.get(0).contains("Name")) return;
+		
+		if(allTokens.size() > 0 && allTokens.get(0).contains("Name")) return;
+		if(allTokens.size() != TEAM_FILE_COLS){
+			throw new RuntimeException("Unable to process team file. Expected " + TEAM_FILE_COLS + ". Was: " + allTokens.size());
+		}
+		
 		Team thisTeam = new Team();
 		thisTeam.name = allTokens.get(0);
 		thisTeam.id = Integer.parseInt(allTokens.get(1));
@@ -163,7 +185,13 @@ public class Tournament {
 			allTokens.add(tok.nextToken());
 		}
 		
-		if(allTokens.size() != 69 || allTokens.get(0).contains("Team")) return;
+		if(allTokens.size() > 0 && allTokens.get(0).contains("Team")){
+			return;
+		}
+		
+		if(allTokens.size() != 69) {
+			throw new RuntimeException("Error: expected 69 columns in file. # of columns found: " + allTokens.size());
+		}
 		
 		List<Set<Integer>> teamSchedule = new ArrayList<Set<Integer>>();
 		
@@ -173,7 +201,7 @@ public class Tournament {
 		try {
 			teamID = Integer.parseInt(allTokens.get(0));
 		} catch (NumberFormatException e){
-			return;
+			throw new RuntimeException("Error: unparsable line from file - could not get team ID: number format exception");
 		}
 		
 		for(int i = 0; i < TOURNAMENT_ROUNDS; i++){
@@ -191,7 +219,7 @@ public class Tournament {
 				try{
 					intFromString = Integer.parseInt(intString);
 				} catch (NumberFormatException e){
-					return;
+					throw new RuntimeException("Error: unparsable line from file - could not process team schedule");
 				}
 				teamsThisRound.add(intFromString);
 				index++;
