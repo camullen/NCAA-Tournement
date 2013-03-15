@@ -13,6 +13,7 @@ public class Team {
 	public int id;
 	public String sagarinName;
 	public double sagarinRating;
+	public String usaTodayName;
 	public int roundEliminated;
 	
 	
@@ -27,6 +28,7 @@ public class Team {
 		id = other.id;
 		sagarinName = other.sagarinName;
 		sagarinRating = other.sagarinRating;
+		usaTodayName = other.usaTodayName;
 		roundEliminated = other.roundEliminated;
 	}
 	
