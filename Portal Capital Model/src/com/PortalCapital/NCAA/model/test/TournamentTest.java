@@ -80,9 +80,6 @@ public class TournamentTest extends TestCase {
 			t.loadTournamentStructure(STRUCTURE_FILE);
 			t.loadTournamentTeams(TEAM_FILE);
 			List<Team> results = t.simulateTournament(9.0);
-			for (int i = 0; i < 1000; i++){
-				results = t.simulateTournament(9.0);
-			}
 			assertNotNull(results);
 			for(Team thisTeam : results){
 				System.out.println(thisTeam + " eliminated in round " + thisTeam.roundEliminated);

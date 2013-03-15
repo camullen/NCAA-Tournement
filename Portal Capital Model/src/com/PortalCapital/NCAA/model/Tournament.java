@@ -21,19 +21,21 @@ import java.util.StringTokenizer;
 public class Tournament {
 	public static final int TEAMS_PER_REGION = 16;
 	public static final int TOURNAMENT_ROUNDS = 6;
-	public static final int TEAM_FILE_COLS = 4;
+	public static final int TEAM_FILE_COLS = 6;
 	
 	public Map<Integer, List<Set<Integer>>> structure;
 	public HashMap<Integer, Team> teamMap;
 	
 	private boolean structureLoaded;
 	private boolean teamsLoaded;
+	private GamePlayer player;
 	
 	public Tournament(){
 		structureLoaded = false;
 		teamsLoaded = false;
 		structure = new HashMap<Integer, List<Set<Integer>>>();
 		teamMap = new HashMap<Integer, Team>();
+		player = new GamePlayer();
 	}
 	
 	
@@ -51,7 +53,7 @@ public class Tournament {
 		Set<Team> teamsAlive = new HashSet<Team>(teamMap.values());
 		List<Team> teamResults = new ArrayList<Team>();
 		
-		GamePlayer player = new GamePlayer(standardDeviation);
+		player.setStandardDeviation(standardDeviation);
 		
 		for(int i = 0; i < TOURNAMENT_ROUNDS; i++){
 			Set<Team> teamsPlayed = new HashSet<Team>();
@@ -171,6 +173,8 @@ public class Tournament {
 		thisTeam.id = Integer.parseInt(allTokens.get(1));
 		thisTeam.sagarinName = allTokens.get(2);
 		thisTeam.sagarinRating = Double.parseDouble(allTokens.get(3));
+		thisTeam.usaTodayName = allTokens.get(4);
+		thisTeam.roundEliminated = Integer.parseInt(allTokens.get(5));
 		teamMap.put(thisTeam.id, thisTeam);
 	}
 
