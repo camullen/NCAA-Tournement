@@ -28,6 +28,7 @@ public class GamePlayer {
 	private static final OddsDownloader downloader = new OddsDownloader();
 	private double standardDeviation;
 	private Map<String, Double> oddsMap;
+	private Map<String, GameResult> resultsMap;
 	
 	
 	
@@ -35,6 +36,7 @@ public class GamePlayer {
 		setStandardDeviation(standardDeviation);
 		try {
 			oddsMap = downloader.getOdds(savedHTML, baseUrl);
+			setUpResultsMap();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,10 +51,12 @@ public class GamePlayer {
 			} else {
 				oddsMap = downloader.getOdds(urlOrFile);
 			}
+			setUpResultsMap();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public GamePlayer(double standardDeviation){
@@ -73,13 +77,14 @@ public class GamePlayer {
 	 */
 	public boolean playGame(Team a, Team b){
 		boolean result;
-		String oddsSearch = a.usaTodayName + b.usaTodayName;
-		Double oddsSpread = oddsMap.get(oddsSearch);
-		if(oddsSpread == null){
-			result = sagarinPlayGame(a, b);
+		Boolean actualResult = checkActual(a, b);
+		Boolean oddsResult = checkOdds(a, b);
+		if(actualResult != null) {
+			result = actualResult;
+		} else if (oddsResult != null){
+			result = oddsResult;
 		} else {
-			double outcome = generateScoreDifferential(oddsSpread);
-			result = (outcome > 0);
+			result = sagarinPlayGame(a, b);
 		}
 		Team winner = result ? a : b;
 		Team loser = result ? b : a;
@@ -88,6 +93,30 @@ public class GamePlayer {
 	}
 	
 	
+	private Boolean checkOdds(Team a, Team b){
+		String oddsSearch = a.usaTodayName + b.usaTodayName;
+		Double oddsSpread = oddsMap.get(oddsSearch);
+		if(oddsSpread == null) return null;
+		double outcome = generateScoreDifferential(oddsSpread);
+		return (outcome > 0);
+	}
+	
+	private Boolean checkActual(Team one, Team two) {
+		GameResult result = resultsMap.get(one.name + two.name);
+		if(result == null) return null;
+		int oneScore, twoScore;
+		if(result.teamA.equals(one.name)){
+			oneScore = result.aScore;
+			twoScore = result.bScore;
+		} else {
+			oneScore = result.bScore;
+			twoScore = result.aScore;
+		}
+		
+		return (oneScore > twoScore);
+		
+	}
+
 	private boolean sagarinPlayGame(Team a, Team b){
 		double spread = a.sagarinRating - b.sagarinRating;
 		double outcome = generateScoreDifferential(spread);
@@ -98,6 +127,10 @@ public class GamePlayer {
 	private double generateScoreDifferential(double spread){
 		NormalDistribution dist = new NormalDistribution(spread, standardDeviation);
 		return dist.sample();
+	}
+	
+	private void setUpResultsMap(){
+		resultsMap = ActualsReader.getResults();
 	}
 	
 	
