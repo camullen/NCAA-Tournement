@@ -150,6 +150,7 @@ public class OddsDownloader {
 			while(reader.ready()){
 				readSet.add(reader.readLine());
 			}
+			reader.close();
 			return readSet;
 		} catch (FileNotFoundException e) {;
 			return null;

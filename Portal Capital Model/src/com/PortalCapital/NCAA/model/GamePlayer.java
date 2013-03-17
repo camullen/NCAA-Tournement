@@ -72,14 +72,18 @@ public class GamePlayer {
 	 * Returns true if team A beats Team B; returns false if Team B beats team A
 	 */
 	public boolean playGame(Team a, Team b){
-		
-		//Need to use point spread preferentially
-		
-		boolean result = sagarinPlayGame(a, b);
+		boolean result;
+		String oddsSearch = a.usaTodayName + b.usaTodayName;
+		Double oddsSpread = oddsMap.get(oddsSearch);
+		if(oddsSpread == null){
+			result = sagarinPlayGame(a, b);
+		} else {
+			double outcome = generateScoreDifferential(oddsSpread);
+			result = (outcome > 0);
+		}
 		Team winner = result ? a : b;
 		Team loser = result ? b : a;
 		System.out.println(winner + " defeats " + loser);
-		
 		return result;
 	}
 	
