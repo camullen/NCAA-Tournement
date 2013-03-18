@@ -24,7 +24,8 @@ public class Tournament {
 	public static final int TEAM_FILE_COLS = 6;
 	
 	public Map<Integer, List<Set<Integer>>> structure;
-	public HashMap<Integer, Team> teamMap;
+	public HashMap<Integer, Team> masterTeamMap;
+	private HashMap<Integer, Team> tempTeamMap;
 	
 	private boolean structureLoaded;
 	private boolean teamsLoaded;
@@ -34,7 +35,7 @@ public class Tournament {
 		structureLoaded = false;
 		teamsLoaded = false;
 		structure = new HashMap<Integer, List<Set<Integer>>>();
-		teamMap = new HashMap<Integer, Team>();
+		masterTeamMap = new HashMap<Integer, Team>();
 		player = new GamePlayer();
 	}
 	
@@ -49,15 +50,19 @@ public class Tournament {
 			System.err.println("Error: Teams Not Properly Loaded");
 			assert(false);
 		}
+		cloneTeamMap();
+		Set<Team> teamsAlive = new HashSet<Team>(tempTeamMap.values());
+		List<Team> teamResults = new ArrayList<Team>(tempTeamMap.values());
 		
-		Set<Team> teamsAlive = new HashSet<Team>(teamMap.values());
-		List<Team> teamResults = new ArrayList<Team>();
+		
 		
 		player.setStandardDeviation(standardDeviation);
+		simulatePlayInGames(tempTeamMap, teamsAlive, player, teamResults);
+		
 		
 		for(int i = 0; i < TOURNAMENT_ROUNDS; i++){
 			Set<Team> teamsPlayed = new HashSet<Team>();
-			for(Team t : teamMap.values()){
+			for(Team t : tempTeamMap.values()){
 				doTeamRound(t, i, teamsAlive, teamResults, player, teamsPlayed);
 			}
 		}
@@ -70,6 +75,42 @@ public class Tournament {
 	}
 	
 	
+	private void cloneTeamMap(){
+		tempTeamMap = new HashMap<Integer, Team>();
+		for(Team t : masterTeamMap.values()){
+			tempTeamMap.put(t.id, t.clone());
+		}
+	}
+	
+	
+	
+	/**
+	 * @param tempTeamMap 
+	 * @param teamsAlive
+	 * @param teamResults
+	 */
+	private void simulatePlayInGames(HashMap<Integer, Team> tempTeamMap, Set<Team> teamsAlive, GamePlayer player, List<Team> teamResults) {
+		for(Team t: new HashSet<Team>(tempTeamMap.values())){
+			if(t.id > 1000 && t.id < 2000){
+				Team opponent = tempTeamMap.get(t.id + 1000);
+				if(opponent == null)
+					throw new RuntimeException("Could not find other play in team");
+				boolean result = player.playGame(t, opponent);
+				if(result){
+					removeTeam(opponent, teamsAlive, teamResults, 0);
+					t.id -= 1000 * (t.id / 1000);
+					tempTeamMap.put(t.id, t);
+				} else {
+					removeTeam(t, teamsAlive, teamResults, 0);
+					opponent.id -= 1000 * (opponent.id / 1000);
+					tempTeamMap.put(opponent.id, opponent);
+				}
+			}
+		}
+		
+	}
+
+
 	/**
 	 * @param thisTeam
 	 * @param i
@@ -117,7 +158,7 @@ public class Tournament {
 		Set<Integer> potentialOpponentsOrig = structure.get(thisTeam.id).get(round);
 		Set<Team> potentialOpponents = new HashSet<Team>();
 		for(Integer i : potentialOpponentsOrig){
-			potentialOpponents.add(teamMap.get(i));
+			potentialOpponents.add(tempTeamMap.get(i));
 		}
 		potentialOpponents.retainAll(teamsAlive);
 		if(potentialOpponents.size() != 1) {
@@ -175,7 +216,7 @@ public class Tournament {
 		thisTeam.sagarinRating = Double.parseDouble(allTokens.get(3));
 		thisTeam.usaTodayName = allTokens.get(4);
 		thisTeam.roundEliminated = Integer.parseInt(allTokens.get(5));
-		teamMap.put(thisTeam.id, thisTeam);
+		masterTeamMap.put(thisTeam.id, thisTeam);
 	}
 
 

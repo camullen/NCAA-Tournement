@@ -7,7 +7,7 @@ package com.PortalCapital.NCAA.model;
  * @author Cameron Mullen
  *
  */
-public class Team {
+public class Team implements Cloneable{
 
 	public String name;
 	public int id;
@@ -33,6 +33,11 @@ public class Team {
 	}
 	
 	
+	@Override
+	public Team clone(){
+		return new Team(this);
+	}
+	
 	
 	
 	@Override
@@ -40,10 +45,7 @@ public class Team {
 		String returnString = id + " - " + name;
 		return returnString;
 	}
-	
-	
-	
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -51,10 +53,10 @@ public class Team {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -70,9 +72,6 @@ public class Team {
 			return false;
 		}
 		Team other = (Team) obj;
-		if (id != other.id) {
-			return false;
-		}
 		if (name == null) {
 			if (other.name != null) {
 				return false;
@@ -82,6 +81,11 @@ public class Team {
 		}
 		return true;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

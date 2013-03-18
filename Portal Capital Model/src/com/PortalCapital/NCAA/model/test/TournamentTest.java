@@ -20,7 +20,7 @@ import com.PortalCapital.NCAA.model.Tournament;
 public class TournamentTest extends TestCase {
 
 	public static final String STRUCTURE_FILE = "TournamentStructure.csv";
-	public static final String TEAM_FILE = "testTeams.csv";
+	public static final String TEAM_FILE = "teams.csv";
 	
 	
 	/**
@@ -69,9 +69,9 @@ public class TournamentTest extends TestCase {
 			e.printStackTrace();
 		}
 		
-		Team kansas = t.teamMap.get(302);
-		assertNotNull(kansas);
-		assertEquals("Kansas", kansas.name);
+		Team ohioState = t.masterTeamMap.get(302);
+		assertNotNull(ohioState);
+		assertEquals("Ohio State", ohioState.name);
 	}
 	
 	public void testNoCrash(){

@@ -22,17 +22,28 @@ public class OddsDownloaderTest extends TestCase {
 	}
 	
 	
-	public void testNoCrash(){
-		
-		OddsDownloader odds = new OddsDownloader();
-		File downloadedFile = new File("USATodayOdds.html");
+//	public void testNoCrash(){
+//		
+//		OddsDownloader odds = new OddsDownloader();
+//		File downloadedFile = new File("USATodayOdds.html");
+//		try {
+//			odds.getOdds(downloadedFile, "http://sportsdirect.usatoday.com/odds/usatoday/odds.aspx");
+//			odds.getAllTeams();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
+	public void testNoCrashOnline(){
 		try {
-			odds.getOdds(downloadedFile, "http://sportsdirect.usatoday.com/odds/usatoday/odds.aspx");
+			OddsDownloader odds = new OddsDownloader();
+			odds.getOdds("http://sportsdirect.usatoday.com/odds/usatoday/odds.aspx");
 			odds.getAllTeams();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e){
 			e.printStackTrace();
 		}
+		
 	}
 
 }

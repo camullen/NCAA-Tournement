@@ -19,7 +19,7 @@ public class GamePlayer {
 	 * Will need to incorporate point spreads and outcomes into this one
 	 */
 	
-	public static final boolean USE_OFFLINE_FILE = true;
+	public static final boolean USE_OFFLINE_FILE = false;
 	
 	public static final double DEFAULT_STANDARD_DEVIATION = 9.0;
 	public static final String DEFAULT_ODDS_URL = "http://sportsdirect.usatoday.com/odds/usatoday/odds.aspx";
