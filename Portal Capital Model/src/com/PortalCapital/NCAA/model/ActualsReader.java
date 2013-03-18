@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 
 public class ActualsReader {
 
-	public static final String DEFAULT_FILENAME = "TBD"; //Need to choose a file
+	public static final String DEFAULT_FILENAME = "resultsFile.csv"; //Need to choose a file
 	
 	
 	public static Map<String, GameResult> getResults(String filename) throws IOException{
