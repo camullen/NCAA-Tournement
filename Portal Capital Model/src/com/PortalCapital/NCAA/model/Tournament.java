@@ -52,7 +52,7 @@ public class Tournament {
 		}
 		cloneTeamMap();
 		Set<Team> teamsAlive = new HashSet<Team>(tempTeamMap.values());
-		List<Team> teamResults = new ArrayList<Team>(tempTeamMap.values());
+		List<Team> teamResults = new ArrayList<Team>();
 		
 		
 		
