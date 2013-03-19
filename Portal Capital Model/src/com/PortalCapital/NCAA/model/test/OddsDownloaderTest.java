@@ -1,6 +1,5 @@
 package com.PortalCapital.NCAA.model.test;
 
-import java.io.File;
 import java.io.IOException;
 
 import junit.framework.TestCase;
