@@ -69,7 +69,8 @@ public class OddsDownloader {
 					if(averageOdd != null){
 						oddsMap.put(awayTeam + homeTeam, averageOdd);
 						oddsMap.put(homeTeam + awayTeam, -averageOdd);
-						System.out.println(awayTeam + " vs. " + homeTeam + " Average Line = " + averageOdd);
+//						For Debugging only
+//						System.out.println(awayTeam + " vs. " + homeTeam + " Average Line = " + averageOdd);
 					}
 						
 				} else {

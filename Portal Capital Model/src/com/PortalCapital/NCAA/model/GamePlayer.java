@@ -86,9 +86,12 @@ public class GamePlayer {
 		} else {
 			result = sagarinPlayGame(a, b);
 		}
+		/*
+		 * For debugging only
 		Team winner = result ? a : b;
 		Team loser = result ? b : a;
 		System.out.println(winner + " defeats " + loser);
+		*/
 		return result;
 	}
 	

@@ -12,11 +12,11 @@ import org.apache.commons.math3.stat.descriptive.MultivariateSummaryStatistics;
 public class Simulator {
 
 	public static final double ROUND_2_SCORE = .01063;
-	public static final double ROUND_3_SCORE = ROUND_2_SCORE + .02;
-	public static final double ROUND_4_SCORE = ROUND_3_SCORE + .0375;
-	public static final double ROUND_5_SCORE = ROUND_4_SCORE + .07;
-	public static final double ROUND_6_SCORE = ROUND_5_SCORE + .13;
-	public static final double ROUND_7_SCORE = ROUND_6_SCORE + .25;
+	public static final double ROUND_3_SCORE = .02;
+	public static final double ROUND_4_SCORE = .0375;
+	public static final double ROUND_5_SCORE = .07;
+	public static final double ROUND_6_SCORE = .13;
+	public static final double ROUND_7_SCORE = .25;
 	
 	public static final String TOURNAMENT_STRUCTURE_FILE = "TournamentStructure.csv";
 	public static final String TEAM_FILE = "teams.csv";
@@ -80,11 +80,11 @@ private List<TeamStats> getTeamStatsList(
 			stats.mean = meanList[i];
 			stats.stDev = stDevList[i];
 			stats.name = teamNameList.get(i);
-			Map<String, Double> covarianceMap = new HashMap<String, Double>();
+			stats.covariances = new HashMap<String, Double>();
 			for(int j = 0; j < teamNameList.size(); j++){
 				double covariance = covarianceMatrix.getEntry(i, j);
 				String teamName = teamNameList.get(j);
-				covarianceMap.put(teamName, covariance);
+				stats.covariances.put(teamName, covariance);
 			}
 			teamStatsList.add(stats);
 		}
