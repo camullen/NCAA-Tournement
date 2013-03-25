@@ -13,7 +13,7 @@ public class SimulatorTest extends TestCase {
 	
 	public void testNoCrash(){
 		Simulator sim = new Simulator();
-		sim.simulate(100000, 9.5);
+		sim.simulate(10000, 9.5);
 		List<TeamStats> teamStatsList = sim.getTeamStats(9.5);
 		assertEquals(68, teamStatsList.size());
 		try {

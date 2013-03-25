@@ -1,69 +1,69 @@
 Name,ID,SagarinName,SagarinRating,usaTodayTeamName,roundEliminated
-Louisville,101,Louisville,94.72,Louisville,0
-Duke,102,Duke,91.03,Duke,0
-Michigan State,103,Michigan State,89.61,Michigan St,0
-Saint Louis,104,Saint Louis,87.17,Saint Louis,0
-Oklahoma State,105,Oklahoma State,86.61,Oklahoma St.,0
-Memphis,106,Memphis,84.88,Memphis,0
-Creighton,107,Creighton,86.87,Creighton,0
-Colorado State,108,Colorado State,84.37,Colorado St.,0
-Missouri,109,Missouri,87.58,Missouri,0
-Cincinnati,110,Cincinnati,84.17,Cincinnati,0
-Oregon,112,Oregon,82.63,Oregon,0
-New Mexico St.,113,New Mexico State,78.93,New Mexico St.,0
-Valparaiso,114,Valparaiso,80.47,Valparaiso,0
-Albany,115,Albany-NY,72.75,Albany,0
-Kansas,201,Kansas,91.7,Kansas,0
-Georgetown,202,Georgetown,88.93,Georgetown,0
-Florida,203,Florida,93.86,Florida,0
-Michigan,204,Michigan,89.01,Michigan,0
-VCU,205,VCU(Va. Commonwealth),86.3,VCU,0
-UCLA,206,UCLA,83.29,UCLA,0
-San Diego State,207,San Diego State,84.77,San Diego St.,0
-North Carolina,208,North Carolina,86.3,North Carolina,0
-Villanova,209,Villanova,83.11,Villanova,0
-Oklahoma,210,Oklahoma,82.96,Oklahoma,0
-Minnesota,211,Minnesota,85.37,Minnesota,0
-Akron,212,Akron,81.28,Akron,0
-South Dakota State,213,South Dakota State,77.68,South Dakota State,0
-Northwestern State,214,Northwestern State,74.01,Northwestern St.,0
-Florida Gulf Coast,215,Florida Gulf Coast,75.69,Florida Gulf Coast,0
-Western Kentucky,216,Western Kentucky,71.48,Western Kentucky,0
-Gonzaga,301,Gonzaga,91.43,Gonzaga,0
-Ohio State,302,Ohio State,91.24,Ohio St,0
-New Mexico,303,New Mexico,86,New Mexico,0
-Kansas State,304,Kansas State,85.64,Kansas St.,0
-Wisconsin,305,Wisconsin,89.65,Wisconsin,0
-Arizona,306,Arizona,86.31,Arizona,0
-Notre Dame,307,Notre Dame,85.73,Notre Dame,0
-Pittsburgh,308,Pittsburgh,89.34,Pittsburgh,0
-Wichita State,309,Wichita State,83.74,Wichita St.,0
-Iowa State,310,Iowa State,84.42,Iowa St.,0
-Belmont,311,Belmont,82.96,Belmont,0
-Mississippi,312,Mississippi,85.01,Mississippi,0
-Harvard,314,Harvard,76.96,Harvard,0
-Iona,315,Iona,77.28,Iona,0
-Southern Univ.,316,Southern U.,70.57,Southern,0
-Indiana,401,Indiana,93.51,Indiana,0
-Miami (FL),402,Miami-Florida,87.91,Miami-Florida,0
-Marquette,403,Marquette,85.87,Marquette,0
-Syracuse,404,Syracuse,88.68,Syracuse,0
-UNLV,405,UNLV,83.97,UNLV,0
-Butler,406,Butler,82.02,Butler,0
-Illinois,407,Illinois,83.3,Illinois,0
-NC State,408,NC State,85.73,N.C. State,0
-Temple,409,Temple,81.31,Temple,0
-Colorado,410,Colorado,82.37,Colorado,0
-Bucknell,411,Bucknell,79.23,Bucknell,0
-California,412,California,81.55,California,0
-Montana,413,Montana,74.25,Montana,0
-Davidson,414,Davidson,81.42,Davidson,0
-Pacific,415,Pacific,74.86,Pacific,0
-Middle Tenn.,1111,Middle Tennessee,82.98,Middle Tennessee St.,0
-St. Mary's (Cal.),2111,Saint Mary's-Cal.,85.25,St. Mary's,0
-N.C. A&T,1116,NC A&T,68.26,No.Carolina A&amp;T,0
-Liberty,2116,Liberty,67.07,Liberty,0
-Boise State,1313,Boise State,81.12,Boise St.,0
-La Salle,2313,La Salle,81.59,La Salle,0
-LIU Brooklyn,1416,Long Island U.,72.5,LIU Brooklyn,0
-James Madison,2416,James Madison,72.29,James Madison,0
+Louisville,101,Louisville,95.14,Louisville,0
+Duke,102,Duke,91.52,Duke,0
+Michigan State,103,Michigan State,90.62,Michigan St,0
+Saint Louis,104,Saint Louis,86.98,Saint Louis,0
+Oklahoma State,105,Oklahoma State,85.7,Oklahoma St.,0
+Memphis,106,Memphis,84.25,Memphis,0
+Creighton,107,Creighton,86.64,Creighton,0
+Colorado State,108,Colorado State,83.83,Colorado St.,0
+Missouri,109,Missouri,87.01,Missouri,0
+Cincinnati,110,Cincinnati,83.9,Cincinnati,0
+Oregon,112,Oregon,84.3,Oregon,0
+New Mexico St.,113,New Mexico State,77.86,New Mexico St.,0
+Valparaiso,114,Valparaiso,80.45,Valparaiso,0
+Albany,115,Albany-NY,73.25,Albany,0
+Kansas,201,Kansas,91.26,Kansas,0
+Georgetown,202,Georgetown,87.96,Georgetown,0
+Florida,203,Florida,94.48,Florida,0
+Michigan,204,Michigan,90.29,Michigan,0
+VCU,205,VCU(Va. Commonwealth),87.19,VCU,0
+UCLA,206,UCLA,82.76,UCLA,0
+San Diego State,207,San Diego State,84.06,San Diego St.,0
+North Carolina,208,North Carolina,86.31,North Carolina,0
+Villanova,209,Villanova,82.83,Villanova,0
+Oklahoma,210,Oklahoma,82.22,Oklahoma,0
+Minnesota,211,Minnesota,86.17,Minnesota,0
+Akron,212,Akron,78.92,Akron,0
+South Dakota State,213,South Dakota State,77.51,South Dakota State,0
+Northwestern State,214,Northwestern State,73.42,Northwestern St.,0
+Florida Gulf Coast,215,Florida Gulf Coast,78.05,Florida Gulf Coast,0
+Western Kentucky,216,Western Kentucky,72.16,Western Kentucky,0
+Gonzaga,301,Gonzaga,90.25,Gonzaga,0
+Ohio State,302,Ohio State,91.55,Ohio St,0
+New Mexico,303,New Mexico,84.8,New Mexico,0
+Kansas State,304,Kansas State,85.22,Kansas St.,0
+Wisconsin,305,Wisconsin,89.25,Wisconsin,0
+Arizona,306,Arizona,87.46,Arizona,0
+Notre Dame,307,Notre Dame,84.81,Notre Dame,0
+Pittsburgh,308,Pittsburgh,88.25,Pittsburgh,0
+Wichita State,309,Wichita State,85.33,Wichita St.,0
+Iowa State,310,Iowa State,85.34,Iowa St.,0
+Belmont,311,Belmont,82.39,Belmont,0
+Mississippi,312,Mississippi,85.55,Mississippi,0
+Harvard,314,Harvard,77.02,Harvard,0
+Iona,315,Iona,77.11,Iona,0
+Southern Univ.,316,Southern U.,71.42,Southern,0
+Indiana,401,Indiana,93.54,Indiana,0
+Miami (FL),402,Miami-Florida,88.65,Miami-Florida,0
+Marquette,403,Marquette,85.47,Marquette,0
+Syracuse,404,Syracuse,89.75,Syracuse,0
+UNLV,405,UNLV,83.23,UNLV,0
+Butler,406,Butler,82.59,Butler,0
+Illinois,407,Illinois,83.97,Illinois,0
+NC State,408,NC State,85.5,N.C. State,0
+Temple,409,Temple,82.04,Temple,0
+Colorado,410,Colorado,82.24,Colorado,0
+Bucknell,411,Bucknell,78.77,Bucknell,0
+California,412,California,81.77,California,0
+Montana,413,Montana,72.58,Montana,0
+Davidson,414,Davidson,81.43,Davidson,0
+Pacific,415,Pacific,73.15,Pacific,0
+Middle Tenn.,1111,Middle Tennessee,82.57,Middle Tennessee St.,0
+St. Mary's (Cal.),2111,Saint Mary's-Cal.,85.27,St. Mary's,0
+N.C. A&T,1116,NC A&T,68.22,No.Carolina A&amp;T,0
+Liberty,2116,Liberty,67.06,Liberty,0
+Boise State,1313,Boise State,80.2,Boise St.,0
+La Salle,2313,La Salle,82.64,La Salle,0
+LIU Brooklyn,1416,Long Island U.,71.89,LIU Brooklyn,0
+James Madison,2416,James Madison,72.98,James Madison,0
